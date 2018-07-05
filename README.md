@@ -1,5 +1,9 @@
 # Micro-Learning App
 
+[![CircleCI](https://circleci.com/gh/chadwalt/micro-learning-app.svg?style=svg)](https://circleci.com/gh/chadwalt/micro-learning-app)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5d552065374c71f28f36/maintainability)](https://codeclimate.com/github/chadwalt/micro-learning-app/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5d552065374c71f28f36/test_coverage)](https://codeclimate.com/github/chadwalt/micro-learning-app/test_coverage)
+
 Micro-Learning App is a responsive web application that sends you one or multiple pages per day about things you want to learn.
 
 The application provides a user with a choice of specifying interests and through this, appropriate pages are found and sent via the user's email.
