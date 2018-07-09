@@ -1,0 +1,31 @@
+%div{:class => ["border", "login-div"]}
+  %span{:class => "login-title"} Account Signup
+  %form{:action => "/signup/user_info", :method => "POST"}
+    - if @error_message
+      %div{:class => "alert alert-danger", :role => "alert"} #{@error_message}
+
+    %div{:class => "form-group"}
+      %label{:for => "first_name"} First Name
+      %input{:type => "text", :class => "form-control", :name => "first_name", :id => "first_name", :placeholder => "Enter your first name", :required => true}
+
+    %div{:class => "form-group"}
+      %label{:for => "last_name"} Last Name
+      %input{:type => "text", :class => "form-control", :name => "last_name", :id => "last_name", :placeholder => "Enter your last name", :required => true}
+
+    %div{:class => "form-group"}
+      %label{:for => "username"} Username
+      %input{:type => "text", :class => "form-control", :name => "username", :id => "username", :placeholder => "Enter your username", :required => true}
+
+    %div{:class => "form-group"}
+      %label{:for => "password"} Password
+      %input{:type => "password", :class => "form-control", :name => "password", :id => "password", :placeholder => "Enter your Password", :required => true}
+
+    %div{:class => "form-group"}
+      %label{:for => "confirm_password"} Confirm Password
+      %input{:type => "password", :class => "form-control", :name => "confirm_password", :id => "confirm_password", :placeholder => "Confirm your password", :required => true}
+
+    %div{:class => "form-group"}
+      %label{:for => "email"} Email
+      %input{:type => "email", :class => "form-control", :name => "email", :id => "email", :placeholder => "eg example@domain.com", :required => true}
+
+    %button{:type => "submit", :class => "submit-btn"} Submit
