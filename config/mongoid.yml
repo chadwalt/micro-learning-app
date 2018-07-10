@@ -1,0 +1,20 @@
+production:
+  clients:
+    default:
+      database: micro_learning_test_db
+      hosts:
+        - localhost:27017
+
+development:
+  clients:
+    default:
+      database: micro_learning_dev_db
+      hosts:
+        - localhost:27017
+
+production:
+  clients:
+    default:
+      database: micro_learning_db
+      hosts:
+        - localhost:27017
