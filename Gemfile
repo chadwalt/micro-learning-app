@@ -8,4 +8,5 @@ gem 'mongoid'
 group :test do
   gem 'rspec'
   gem 'rspec_junit_formatter'
+  gem 'rack-test'
 end
