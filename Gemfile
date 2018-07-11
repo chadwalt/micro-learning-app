@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'shotgun'
 gem 'haml'
 gem 'mongoid'
+gem 'shotgun'
+gem 'sinatra'
 
 group :test do
+  gem 'rack-test'
   gem 'rspec'
   gem 'rspec_junit_formatter'
-  gem 'rack-test'
 end

@@ -1,15 +1,15 @@
 require_relative './application_controller'
 require_relative '../models/user_model'
 
+# Create account for a new user
 class SignupController < ApplicationController
-
-  get "/" do
-    @css_link = "index.css"
+  get '/' do
+    @css_link = 'index.css'
     @error_message = session[:error]
     haml :signup
   end
 
-  post "/user_info" do
+  post '/user_info' do
     first_name = params.fetch('first_name')
     last_name = params.fetch('last_name')
     username = params.fetch('username')
@@ -17,9 +17,9 @@ class SignupController < ApplicationController
     confirm_password = params.fetch('confirm_password')
     email = params.fetch('email')
 
-    if password != confirm_password then
+    if password != confirm_password
       session[:error] = "Password's didn't match"
-      redirect to("/")
+      redirect to('/')
     end
 
     session.delete(:error) if session[:error]
@@ -32,5 +32,6 @@ class SignupController < ApplicationController
       email: email
     )
 
+    redirect to('/dashboard')
   end
 end

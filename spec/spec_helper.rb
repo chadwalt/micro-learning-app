@@ -2,7 +2,7 @@ require_relative '../app/controllers/application_controller'
 require 'rspec'
 require 'rack/test'
 
-ENV['RACK_ENV'] = "test"
+ENV['RACK_ENV'] = 'test'
 
 module RSpecMixin
   include Rack::Test::Methods
@@ -11,4 +11,4 @@ module RSpecMixin
   end
 end
 
-RSpec.configure {|config| config.include RSpecMixin}
+RSpec.configure { |config| config.include RSpecMixin }

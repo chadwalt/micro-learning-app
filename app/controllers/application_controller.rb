@@ -3,10 +3,8 @@ require './config/environment'
 require 'haml'
 require 'base64'
 
+# Base Controller for the application
 class ApplicationController < Sinatra::Base
-
-  @title = "Yiiga"
-
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -15,7 +13,6 @@ class ApplicationController < Sinatra::Base
   end
 
   before do
-    headers "Content-Type" => "text/html; charset=utf-8"
+    headers 'Content-Type' => 'text/html; charset=utf-8'
   end
-
 end
