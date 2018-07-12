@@ -33,3 +33,7 @@ body {
   min-width: 150px;
   height: 55px;
 }
+
+.signup-in-account {
+  float: right;
+}
