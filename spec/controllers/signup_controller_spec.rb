@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 require_relative '../../app/controllers/signup_controller'
-require_relative '../../app/models/user_model'
+require_relative '../../app/models/user'
 
 describe SignupController do
   it 'should display the signup page' do
