@@ -5,7 +5,7 @@ require_relative '../models/user'
 class SignupController < ApplicationController
   error Mongo::Error::OperationFailure do |error|
     if error.message.include? 'E11000'
-      session[:error] = 'Email taken, place use another'
+      session[:error] = 'Email taken, please use another'
       redirect to('/')
     end
   end
