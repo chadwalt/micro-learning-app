@@ -5,22 +5,22 @@ logger = Logger.new($stdout)
 ROOT = File.expand_path('.', File.dirname(__FILE__))
 
 namespace :mongoid do
-  task :create_indexes, :environment do |t, args|
+  task :create_indexes, :environment do |_t, args|
     def determine_model(path)
-      path =~ /(.*)\/(.*).rb/
+      path =~ /^(.*)\/(.*).rb/
       $2.camelize.constantize
     end
 
     unless args[:environment]
-      logger.fatal "Mongoid: Must provide an environment"
+      logger.fatal 'Mongoid: Must provide an environment'
       exit
     end
 
-    yaml = YAML.load_file("config/mongoid.yml")
+    yaml = YAML.load_file('config/mongoid.yml')
     env_info = yaml[args[:environment]]
 
     unless env_info
-      logger.fatal "Mongoid: Unknown environment"
+      logger.fatal 'Mongoid: Unknown environment'
       exit
     end
 

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt'
 gem 'haml'
 gem 'mongoid'
 gem 'shotgun'

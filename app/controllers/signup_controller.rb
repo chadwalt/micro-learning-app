@@ -1,8 +1,15 @@
 require_relative './application_controller'
-require_relative '../models/user_model'
+require_relative '../models/user'
 
 # Create account for a new user
 class SignupController < ApplicationController
+  error Mongo::Error::OperationFailure do |error|
+    if error.message.include? 'E11000'
+      session[:error] = 'Email taken, place use another'
+      redirect to('/')
+    end
+  end
+
   get '/' do
     @css_link = 'index.css'
     @error_message = session[:error]
@@ -10,28 +17,14 @@ class SignupController < ApplicationController
   end
 
   post '/user_info' do
-    first_name = params.fetch('first_name')
-    last_name = params.fetch('last_name')
-    username = params.fetch('username')
-    password = params.fetch('password')
-    confirm_password = params.fetch('confirm_password')
-    email = params.fetch('email')
+    @user = User.new(params[:user])
 
-    if password != confirm_password
-      session[:error] = "Password's didn't match"
+    if @user.save
+      session.delete(:error) if session[:error]
+      redirect to('/dashboard')
+    else
+      session[:error] = @user.errors.full_messages
       redirect to('/')
     end
-
-    session.delete(:error) if session[:error]
-
-    User.create(
-      first_name: first_name,
-      last_name: last_name,
-      username: username,
-      password: Base64.encode64(password),
-      email: email
-    )
-
-    redirect to('/dashboard')
   end
 end

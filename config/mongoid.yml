@@ -1,4 +1,4 @@
-production:
+test:
   clients:
     default:
       database: micro_learning_test_db
@@ -18,4 +18,3 @@ production:
       database: micro_learning_db
       hosts:
         - localhost:27017
-        
