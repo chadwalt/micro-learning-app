@@ -1,7 +1,9 @@
+require 'rubygems'
 require 'sinatra/base'
 require './config/environment'
 require 'haml'
 require 'base64'
+require 'sinatra/partial'
 
 # Base Controller for the application
 class ApplicationController < Sinatra::Base
@@ -11,6 +13,8 @@ class ApplicationController < Sinatra::Base
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET')
     set :show_exceptions, :after_handler
+    register Sinatra::Partial
+    enable :partial_underscores
   end
 
   before do

@@ -5,6 +5,7 @@ gem 'haml'
 gem 'mongoid'
 gem 'shotgun'
 gem 'sinatra'
+gem 'sinatra-partial'
 
 group :test do
   gem 'rack-test'

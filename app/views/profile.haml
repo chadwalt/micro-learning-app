@@ -1,88 +1,63 @@
-%div{:class => "main"}
-  %div{:class => "main-sidebar"}
-    %div{:class => "app-title"} Yigga
-    %div{:class => "sidebar"}
-      %ul{:class => "sidebar-menu"}
-        %li{:class => "sidebar-header"} Main Navigation
-        %li{:class => "menu-tree"}
-          %i{:class => "fas fa-tachometer-alt"}
-          %a{:href => ""} Dashboard
-        %li{:class => "menu-tree"}
-          %i{:class => "fas fa-file-alt"}
-          %a{:href => ""} Pages
-        %li{:class => "menu-tree"}
-          %i{:class => "fas fa-cogs"}
-          %a{:href => ""} Settings
+= partial :sidebar
 
-  %div{:class => "content"}
-    %div{:class => "main-navbar"}
-      %nav{:class => "navbar navbar-light bg-light"}
-        %span{:class => "navbar-brand mb-0 h1"} Profile
-        %span{:class => "navbar-brand mb-0 h1"}
-          %img{:id => "nav-profile-image", :src => "https://qph.ec.quoracdn.net/main-qimg-d999ec0c56797e9248890badd3643024-c"}
-            %span{:class => "btn-group"}
-              %input{:type => "button", :value => "Chadwalt", :class => "dropdown-toggle dropdown-username", :"data-toggle" => "dropdown", :"aria-haspopup" => "true", :"aria-expanded" => "false"} 
-                %div{:class => "dropdown-menu dropdown-menu-right"}
-                  %a{:class => "dropdown-item", :href => "#"} Settings
-                  %div{:class => "dropdown-divider"}
-                  %a{:class => "dropdown-item", :href => "#"} Logout
+= partial :navbar
 
-    %div{:class => "main-content"}
-      %div{:class => "col-md-3"}
-        %img{:class => "profile-user-img", :src => "https://qph.ec.quoracdn.net/main-qimg-d999ec0c56797e9248890badd3643024-c", :alt => "User Profile"}
+%div{:class => "main-content"}
+  %div{:class => "col-md-3"}
+    %img{:class => "profile-user-img", :src => "https://qph.ec.quoracdn.net/main-qimg-d999ec0c56797e9248890badd3643024-c", :alt => "User Profile"}
 
-      %div{:class => "col-md-9 profile-content"}
-        %ul{:class => "nav nav-tabs"}
-          %li{:class => "nav-item"}
-            %a{:"data-toggle" => "tab", :class => "nav-link active", :href => "#settings-tab"} Settings
-          %li{:class => "nav-item"}
-            %a{:"data-toggle" => "tab", :class => "nav-link", :href => "#password-tab"} Password
+  %div{:class => "col-md-9 profile-content"}
+    %ul{:class => "nav nav-tabs"}
+      %li{:class => "nav-item"}
+        %a{:"data-toggle" => "tab", :class => "nav-link active", :href => "#settings-tab"} Settings
+      %li{:class => "nav-item"}
+        %a{:"data-toggle" => "tab", :class => "nav-link", :href => "#password-tab"} Password
 
-        %div{:class => "tab-content"}
-          %div{:id => "settings-tab", :class => "tab-pane fade show active"}
-            %form
-              %div{:class => "form-group row"}
-                %label{:for => "first_name", :class =>"col-sm-2 col-form-label"} First Name
-                %div{:class => "col-sm-7"}
-                  %input{:type => "text", :class => "form-control", :name => "first_name", :id => "first_name"}
-              %div{:class => "form-group row"}
-                %label{:for => "last_name", :class =>"col-sm-2 col-form-label"} Last Name
-                %div{:class => "col-sm-7"}
-                  %input{:type => "text", :class => "form-control", :name => "last_name", :id => "last_name"}
-              %div{:class => "form-group row"}
-                %label{:for => "username", :class =>"col-sm-2 col-form-label"} Username
-                %div{:class => "col-sm-7"}
-                  %input{:type => "text", :class => "form-control", :name => "username", :id => "username"}
-              %div{:class => "form-group row"}
-                %label{:for => "email", :class =>"col-sm-2 col-form-label"} Email
-                %div{:class => "col-sm-7"}
-                  %input{:type => "email", :class => "form-control", :name => "email", :id => "email"}
-              %div{:class => "form-group row"}
-                %label{:for => "profile_pic_upload", :class =>"col-sm-2 col-form-label"} Profile Picture
-                %div{:class => "col-sm-7"}
-                  %input{:type => "file", :class => "form-control", :name => "profile_pic_upload", :id => "profile_pic_upload"}
-              %div{:class => "form-group row"}
-                %label{:for => "interests", :class =>"col-sm-2 col-form-label"} Interests
-                %div{:class => "col-sm-7"}
-                  %select{:class => "form-control", :multiple => true, :name => "interests"}
-                    %option Technology
-                    %option Environment
-                    %option Science
-                    %option Business
-              %button{:type => "submit", :class => "submit-btn"} Save
+    %div{:class => "tab-content"}
+      %div{:id => "settings-tab", :class => "tab-pane fade show active"}
+        %form
+          %div{:class => "form-group row"}
+            %label{:for => "first_name", :class =>"col-sm-2 col-form-label"} First Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :name => "first_name", :id => "first_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "last_name", :class =>"col-sm-2 col-form-label"} Last Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :name => "last_name", :id => "last_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "username", :class =>"col-sm-2 col-form-label"} Username
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :name => "username", :id => "username"}
+          %div{:class => "form-group row"}
+            %label{:for => "email", :class =>"col-sm-2 col-form-label"} Email
+            %div{:class => "col-sm-7"}
+              %input{:type => "email", :class => "form-control", :name => "email", :id => "email"}
+          %div{:class => "form-group row"}
+            %label{:for => "profile_pic_upload", :class =>"col-sm-2 col-form-label"} Profile Picture
+            %div{:class => "col-sm-7"}
+              %input{:type => "file", :class => "form-control", :name => "profile_pic_upload", :id => "profile_pic_upload"}
+          %div{:class => "form-group row"}
+            %label{:for => "interests", :class =>"col-sm-2 col-form-label"} Interests
+            %div{:class => "col-sm-7"}
+              %select{:class => "form-control", :multiple => true, :name => "interests"}
+                %option Technology
+                %option Environment
+                %option Science
+                %option Business
+          %button{:type => "submit", :class => "submit-btn"} Save
 
-          %div{:id => "password-tab", :class => "tab-pane fade"}
-            %form
-              %div{:class => "form-group row"}
-                %label{:for => "old_password", :class =>"col-sm-3 col-form-label"} Old Password
-                %div{:class => "col-sm-7"}
-                  %input{:type => "password", :class => "form-control", :name => "old_password", :id => "old_password"}
-              %div{:class => "form-group row"}
-                %label{:for => "password", :class =>"col-sm-3 col-form-label"} New Password
-                %div{:class => "col-sm-7"}
-                  %input{:type => "password", :class => "form-control", :name => "password", :id => "password"}
-              %div{:class => "form-group row"}
-                %label{:for => "confirm_password", :class =>"col-sm-3 col-form-label"} Confirm Password
-                %div{:class => "col-sm-7"}
-                  %input{:type => "password", :class => "form-control", :name => "confirm_password", :id => "confirm_password"}
-              %button{:type => "submit", :class => "submit-btn"} Save
+      %div{:id => "password-tab", :class => "tab-pane fade"}
+        %form
+          %div{:class => "form-group row"}
+            %label{:for => "old_password", :class =>"col-sm-3 col-form-label"} Old Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "old_password", :id => "old_password"}
+          %div{:class => "form-group row"}
+            %label{:for => "password", :class =>"col-sm-3 col-form-label"} New Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "password", :id => "password"}
+          %div{:class => "form-group row"}
+            %label{:for => "confirm_password", :class =>"col-sm-3 col-form-label"} Confirm Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "confirm_password", :id => "confirm_password"}
+          %button{:type => "submit", :class => "submit-btn"} Save
