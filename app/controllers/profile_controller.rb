@@ -13,7 +13,8 @@ class ProfileController < ApplicationController
   end
 
   post '/update_user' do
-    if file = params[:user]['image']
+    if params[:user]['image']
+      file = params[:user]['image']
       file_name = file[:filename]
       temp_file = file[:tempfile]
 
@@ -26,7 +27,7 @@ class ProfileController < ApplicationController
 
     User.where(email: session[:email]).update(params[:user])
     session[:user] = params[:user]
-    session[:success] = "Successfully Saved"
+    session[:success] = 'Successfully Saved'
 
     redirect '/profile'
   end
@@ -37,7 +38,7 @@ class ProfileController < ApplicationController
     if user.authenticate(params[:user]['old_password'])
       if params[:user]['password'] == params[:user]['password_confirmation']
         user.update_attributes(password_digest: params[:user]['old_password'])
-        session[:success] = "Password changed successfully"
+        session[:success] = 'Password changed successfully'
         session.delete(:error) if session[:error]
       else
         session[:error] = "Confirmation Password didn't match Password"
