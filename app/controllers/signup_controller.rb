@@ -21,7 +21,8 @@ class SignupController < ApplicationController
 
     if @user.save
       session.delete(:error) if session[:error]
-      redirect to('/dashboard')
+      session[:email] = @user.email
+      redirect '/profile'
     else
       session[:error] = @user.errors.full_messages
       redirect to('/')
