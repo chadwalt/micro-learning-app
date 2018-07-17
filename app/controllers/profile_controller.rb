@@ -34,9 +34,11 @@ class ProfileController < ApplicationController
   post '/change_password' do
     user = User.find_by(_id: session[:user_id])
 
-    if user.authenticate(params[:user]['old_password'])
-      if params[:user]['password'] == params[:user]['password_confirmation']
-        user.update_attributes(password_digest: params[:user]['old_password'])
+    submitted_data = html_escaper(params[:user])
+
+    if user.authenticate(submitted_data[:old_password])
+      if submitted_data[:password] == submitted_data[:password_confirmation]
+        user.update_attributes(password_digest: submitted_data[:password])
         session[:success] = 'Password changed successfully'
         session.delete(:error) if session[:error]
       else
