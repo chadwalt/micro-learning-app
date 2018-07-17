@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
 
     @css_link = 'style.css'
     @user = User.find_by(email: session[:email])
-    session[:user]['image'] = @user.image
+    session[:user] = @user
     haml :profile
   end
 

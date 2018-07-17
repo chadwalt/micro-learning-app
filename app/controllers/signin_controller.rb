@@ -20,8 +20,8 @@ class SigninController < ApplicationController
       params[:user]['password']
     )
 
-    session[:username] = user.username
-    session[:email] = user.email
+    session[:username] = params[:user]['username']
+    session[:email] = params[:user]['email']
     session.delete(:error) if session[:error]
 
     redirect to('/dashboard')
