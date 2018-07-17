@@ -20,8 +20,12 @@ class SignupController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
+      user_info = User.find_by(email: params[:user][:email])
+      session[:user_id] = user_info[:_id]
+      session[:image] = user_info[:image]
       session.delete(:error) if session[:error]
-      redirect to('/dashboard')
+      
+      redirect '/profile'
     else
       session[:error] = @user.errors.full_messages
       redirect to('/')

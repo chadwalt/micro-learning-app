@@ -15,7 +15,8 @@ class User
   field :password_digest, type: String
   field :email, type: String
   field :role, type: String, default: 'user'
-  field :image, type: String, default: ''
+  field :image, type: String, default: 'blank_user.jpeg'
+  field :interests, type: Array
 
   has_secure_password
 

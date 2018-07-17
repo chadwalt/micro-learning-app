@@ -1,0 +1,12 @@
+%div{:class => "content"}
+  %div{:class => "main-navbar"}
+    %nav{:class => "navbar navbar-light bg-light"}
+      %span{:class => "navbar-brand mb-0 h1"} Profile
+      %span{:class => "navbar-brand mb-0 h1"}
+        %img{:id => "nav-profile-image", :alt => "profile picture", :src => "images/#{session[:image]}"}
+          %span{:class => "btn-group"}
+            %input{:type => "button", :value => "#{@user[:username]}", :class => "dropdown-toggle dropdown-username", :"data-toggle" => "dropdown", :"aria-haspopup" => "true", :"aria-expanded" => "false"}
+              %div{:class => "dropdown-menu dropdown-menu-right"}
+                %a{:class => "dropdown-item", :href => "#"} Settings
+                %div{:class => "dropdown-divider"}
+                %a{:class => "dropdown-item", :href => "#"} Logout

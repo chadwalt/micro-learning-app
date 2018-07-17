@@ -5,4 +5,5 @@ Dir.glob('./app/{controllers}/*.rb').each { |file| require file }
 
 map('/signup') { use SignupController }
 map('/') { use SigninController }
+map('/profile') { use ProfileController }
 run ApplicationController

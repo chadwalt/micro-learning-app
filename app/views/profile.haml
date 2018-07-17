@@ -1,0 +1,69 @@
+= partial :sidebar
+
+= partial :navbar
+
+%div{:class => "main-content"}
+  %div{:class => "col-md-3"}
+    %img{:class => "profile-user-img", :src => "/images/#{@user.image}", :alt => "User Profile"}
+
+  %div{:class => "col-md-9 profile-content"}
+    %ul{:class => "nav nav-tabs"}
+      %li{:class => "nav-item"}
+        %a{:"data-toggle" => "tab", :class => "nav-link active", :href => "#settings-tab"} Settings
+      %li{:class => "nav-item"}
+        %a{:"data-toggle" => "tab", :class => "nav-link", :href => "#password-tab"} Password
+
+    %div{:class => "tab-content"}
+      %div{:id => "settings-tab", :class => "tab-pane fade show active"}
+        - if session[:error]
+          %div{:class => "alert alert-danger", :role => "alert"} #{session[:error]}
+
+        - if session[:success]
+          %div{:class => "alert alert-success", :role => "alert"} #{session[:success]}
+
+        %form{:action => "profile/update_user", :method => "POST", :enctype => "multipart/form-data"}
+          %div{:class => "form-group row"}
+            %label{:for => "first_name", :class =>"col-sm-2 col-form-label"} First Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[first_name]", :value => @user.first_name,  :id => "first_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "last_name", :class =>"col-sm-2 col-form-label"} Last Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[last_name]", :value => @user.last_name, :id => "last_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "username", :class =>"col-sm-2 col-form-label"} Username
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[username]", :value => @user.username, :id => "username"}
+          %div{:class => "form-group row"}
+            %label{:for => "email", :class =>"col-sm-2 col-form-label"} Email
+            %div{:class => "col-sm-7"}
+              %input{:type => "email", :class => "form-control", :required => true, :name => "user[email]", :id => "email", :value => @user.email}
+          %div{:class => "form-group row"}
+            %label{:for => "profile_pic_upload", :class =>"col-sm-2 col-form-label"} Profile Picture
+            %div{:class => "col-sm-7"}
+              %input{:type => "file", :class => "form-control", :name => "user[image]", :id => "profile_pic_upload", :accept => "image/*"}
+          %div{:class => "form-group row"}
+            %label{:for => "interests", :class =>"col-sm-2 col-form-label"} Interests
+            %div{:class => "col-sm-7"}
+              %select{:class => "form-control", :multiple => true, :required => true, :name => "user[interests][]"}
+                %option Technology
+                %option Environment
+                %option Science
+                %option Business
+          %button{:type => "submit", :class => "submit-btn"} Save
+
+      %div{:id => "password-tab", :class => "tab-pane fade"}
+        %form{:action => "/profile/change_password", :method => "POST"}
+          %div{:class => "form-group row"}
+            %label{:for => "old_password", :class =>"col-sm-3 col-form-label"} Old Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "user[old_password]", :id => "old_password"}
+          %div{:class => "form-group row"}
+            %label{:for => "password", :class =>"col-sm-3 col-form-label"} New Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "user[password]", :id => "password"}
+          %div{:class => "form-group row"}
+            %label{:for => "confirm_password", :class =>"col-sm-3 col-form-label"} Confirm Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :name => "user[password_confirmation]", :id => "confirm_password"}
+          %button{:type => "submit", :class => "submit-btn"} Save
