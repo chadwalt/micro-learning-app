@@ -4,11 +4,10 @@ require_relative '../models/user'
 # Handles user profile.
 class ProfileController < ApplicationController
   get '/' do
-    redirect '/' unless session[:email]
+    redirect '/' unless session[:user_id]
 
     @css_link = 'style.css'
-    @user = User.find_by(email: session[:email])
-    session[:user] = @user
+    @user = User.find_by(_id: session[:user_id])
     haml :profile
   end
 
@@ -23,17 +22,17 @@ class ProfileController < ApplicationController
       end
 
       params[:user]['image'] = file_name
+      session[:image] = file_name
     end
 
-    User.where(email: session[:email]).update(params[:user])
-    session[:user] = params[:user]
+    User.where(_id: session[:user_id]).update(params[:user])
     session[:success] = 'Successfully Saved'
 
     redirect '/profile'
   end
 
   post '/change_password' do
-    user = User.find_by(email: session[:email])
+    user = User.find_by(_id: session[:user_id])
 
     if user.authenticate(params[:user]['old_password'])
       if params[:user]['password'] == params[:user]['password_confirmation']
