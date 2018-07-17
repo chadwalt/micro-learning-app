@@ -4,9 +4,12 @@ require './config/environment'
 require 'haml'
 require 'base64'
 require 'sinatra/partial'
+require_relative '../helpers/application_helper.rb'
 
 # Base Controller for the application
 class ApplicationController < Sinatra::Base
+  helpers Sinatra::AppHelpers
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'

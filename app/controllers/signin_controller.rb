@@ -15,13 +15,14 @@ class SigninController < ApplicationController
   end
 
   post '/signin' do
-    user = User.find_by(email: params[:user]['email']).try(
+    submited_data = html_escaper(params[:user])
+    user = User.find_by(email: submited_data[:email]).try(
       :authenticate,
-      params[:user]['password']
+      submited_data[:password]
     )
 
-    session[:username] = params[:user]['username']
-    session[:email] = params[:user]['email']
+    session[:_id] = user[:_id]
+    session[:image] = user[:image]
     session.delete(:error) if session[:error]
 
     redirect to('/dashboard')
