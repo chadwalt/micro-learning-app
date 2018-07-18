@@ -13,8 +13,7 @@
         %li{:class => "menu-tree"}
           %i{:class => "fas fa-cogs"}
           %a{:href => ""} Settings
-        - if @user.role == 'admin'
+        - if @user.role == roles[0]
           %li{:class => "menu-tree"}
             %i{:class => "fas fa-bars"}
             %a{:href => "/category"} Categories
-            

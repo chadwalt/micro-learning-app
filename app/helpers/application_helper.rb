@@ -9,6 +9,10 @@ module Sinatra
 
       params
     end
+
+    def roles
+      roles = ['admin', 'user']
+    end
   end
 
   helpers AppHelpers
