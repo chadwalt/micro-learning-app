@@ -1,4 +1,6 @@
+# Sinatra Helpers
 module Sinatra
+  # Application Helpers
   module AppHelpers
     def html_escaper(params)
       params.each do |key, value|
@@ -6,6 +8,10 @@ module Sinatra
       end
 
       params
+    end
+
+    def roles
+      roles = ['admin', 'user']
     end
   end
 

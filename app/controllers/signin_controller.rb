@@ -21,7 +21,7 @@ class SigninController < ApplicationController
       submited_data[:password]
     )
 
-    session[:_id] = user[:_id]
+    session[:user_id] = user[:_id]
     session[:image] = user[:image]
     session.delete(:error) if session[:error]
 
