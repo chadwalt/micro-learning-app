@@ -8,7 +8,8 @@ $(function () {
 
   $('#add_category').on('click', () => {
     $('#form_category')[0].reset();
-    $('#form_category').prop('action', '/category/add_category')
+    $('#form_category').prop('action', '/category/add_category');
+    $('#AddCategoryModal').text("Add New Category")
   })
 
   $('#delete_category').on('click', function () {
@@ -30,5 +31,6 @@ $(function () {
     $('#category_name').val(category.name);
     $('#category_description').val(category.description);
     $('#form_category').prop('action', '/category/edit_category')
+    $('#AddCategoryModal').text("Edit Category")
   })
 });
