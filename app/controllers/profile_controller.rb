@@ -1,5 +1,6 @@
 require_relative './application_controller'
 require_relative '../models/user'
+require_relative '../models/category'
 
 # Handles user profile.
 class ProfileController < ApplicationController
@@ -8,6 +9,7 @@ class ProfileController < ApplicationController
 
     @css_link = 'style.css'
     @user = User.find_by(_id: session[:user_id])
+    @categories = Category.all
     haml :profile
   end
 

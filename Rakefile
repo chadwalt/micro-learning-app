@@ -1,7 +1,5 @@
 require 'mongoid'
 require 'logger'
-require 'rspec/core'
-require 'rspec/core/rake_task'
 
 logger = Logger.new($stdout)
 ROOT = File.expand_path('.', File.dirname(__FILE__))
@@ -62,11 +60,5 @@ namespace :db do
       require seeder
       logger.info "Seeder created for #{seeder}"
     end
-  end
-end
-
-namespace :rspec do
-  task :run_tests do
-    RSpec::Core::RakeTask.new(:spec)
   end
 end

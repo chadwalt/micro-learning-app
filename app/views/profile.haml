@@ -47,10 +47,10 @@
               %label{:for => "interests", :class =>"col-sm-2 col-form-label"} Interests
               %div{:class => "col-sm-7"}
                 %select{:class => "form-control", :multiple => true, :required => true, :name => "user[interests][]"}
-                  %option Technology
-                  %option Environment
-                  %option Science
-                  %option Business
+                  - @categories.each do |value|
+                    %option{:title => value.description} #{value.name}
+                %small #{@user.interests}
+
             %button{:type => "submit", :class => "submit-btn"} Save
 
         %div{:id => "password-tab", :class => "tab-pane fade"}
