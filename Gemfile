@@ -3,11 +3,12 @@ source 'https://rubygems.org'
 gem 'bcrypt'
 gem 'haml'
 gem 'mongoid'
+gem 'pry'
 gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-partial'
-gem 'pry'
+
 
 group :test do
   gem 'database_cleaner'
