@@ -16,5 +16,4 @@ production:
   clients:
     default:
       database: micro_learning_db
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGODB_URI'] %>
