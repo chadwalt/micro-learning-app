@@ -85,8 +85,11 @@
   position: relative;
   left: 230px;
   top: 20px;
+  width: 78%;
+}
+
+.profile-main-content {
   display: flex;
-  width: 100%;
 }
 
 .profile-user-img {
@@ -121,4 +124,17 @@
 .dropdown-username {
   border: 0;
   background: inherit;
+}
+
+.category_table {
+  width: 105%;
+  padding: 40px;
+}
+
+#add_category {
+  float: right;
+}
+
+.category_table_contents a {
+  text-decoration: none;
 }

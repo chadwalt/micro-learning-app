@@ -1,0 +1,41 @@
+= partial :sidebar
+
+= partial :navbar
+
+%div{:class => "main-content"}
+  %div{:class => "category_buttons"}
+    %button{:class => "btn btn-primary", :"data-toggle" => "modal", :"data-target" => "#categoryModal", :id => "add_category"} Add Category
+  %div{:class => "category_table"}
+    %table{:class => "table table-striped category_table_contents"}
+      %thead
+        %tr
+          %th{:scope => "col"} Category Name
+          %th{:scope => "col"} Description
+      %tbody
+        %tr
+        - @categories.each do |value|
+          %tr
+            %td
+              %a{:href => "#", :"data-toggle" => "modal", :"data-target" => "#categoryModal", :id => value._id, :"data-category" => value.to_json} #{value[:name]}
+            %td #{value[:description]}
+
+  %div{:class => "modal fade", :id => "categoryModal", :tabindex => "-1", :role => "dialog", :"aria-labelledby" => "AddCategoryModal", :"aria-hidden" => "true"}
+    %div{:class => "modal-dialog", :role => "document"}
+      %div{:class => "modal-content"}
+        %div{:class => "modal-header"}
+          %h5{:class => "modal-title", :id => "AddCategoryModal"} Add New Category
+        %div{:class => "modal-body"}
+          %form{:action => "/category/add_category", :method => "POST", :id => "form_category"}
+            %input{:id => "category_id", :name => "category[_id]", :hidden => true}
+            %div{:class => "form-group row"}
+              %label{:for => "category_name", :class =>"col-sm-3 col-form-label"} Name
+              %div{:class => "col-sm-7"}
+                %input{:type => "text", :class => "form-control", :name => "category[name]", :id => "category_name", :required => true}
+            %div{:class => "form-group row"}
+              %label{:for => "category_description", :class =>"col-sm-3 col-form-label"} Description
+              %div{:class => "col-sm-7"}
+                %textarea{:class => "form-control", :name => "category[description]", :id => "category_description"}
+        %div{:class => "modal-footer"}
+          %button{:type => "button", :class => "btn btn-danger", :id => "delete_category"} Delete
+          %button{:type => "button", :class => "btn btn-secondary", :"data-dismiss" => "modal"} Close
+          %button{:type => "button", :class => "btn btn-primary", :"data-dismiss" => "modal", :id => "save_category"} Save Changes
