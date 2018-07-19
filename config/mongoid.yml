@@ -15,5 +15,4 @@ development:
 production:
   clients:
     default:
-      database: micro_learning_db
-      uri: <%= ENV['MONGODB_URI'] %>
+      url: <%= ENV['DATABASE_URL'] %>

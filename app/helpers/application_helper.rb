@@ -10,8 +10,8 @@ module Sinatra
       params
     end
 
-    def roles
-      roles = ['admin', 'user']
+    def user_roles
+      %w[admin user]
     end
   end
 
