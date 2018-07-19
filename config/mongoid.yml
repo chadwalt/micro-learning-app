@@ -15,4 +15,9 @@ development:
 production:
   clients:
     default:
-      url: <%= ENV['DATABASE_URL'] %>
+      database: <%= ENV['DATABASE_NAME'] %>
+      hosts:
+        - ds239911.mlab.com:39911
+      options:
+        - user: <%= ENV['DATABASE_USER'] %>
+        - password: <%= ENV['DATABASE_PASSWORD'] %>
