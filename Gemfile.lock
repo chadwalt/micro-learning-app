@@ -35,6 +35,9 @@ GEM
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     rake (12.3.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
@@ -76,12 +79,16 @@ DEPENDENCIES
   mongoid
   pry
   rack-test
+  racksh
   rake
   rspec
   rspec_junit_formatter
   shotgun
   sinatra
   sinatra-partial
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.16.2

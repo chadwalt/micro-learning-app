@@ -9,6 +9,7 @@ gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-partial'
+gem 'racksh'
 
 group :test do
   gem 'database_cleaner'
