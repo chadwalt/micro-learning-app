@@ -4,7 +4,7 @@
 }
 
 .main-sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   padding-top: 10px;
@@ -69,10 +69,11 @@
 }
 
 .main-navbar {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 230px;
-  width: 100%;
+  width: calc(100% - 230px);
+  z-index: 1;
 }
 
 #nav-profile-image {
@@ -84,7 +85,7 @@
 .main-content {
   position: relative;
   left: 230px;
-  top: 20px;
+  top: 90px;
   width: 78%;
 }
 
@@ -131,10 +132,23 @@
   padding: 40px;
 }
 
+.table_contents {
+  width: 105%;
+  padding: 40px;
+}
+
 #add_category {
   float: right;
 }
 
 .category_table_contents a {
   text-decoration: none;
+}
+
+.table_buttons_input {
+  float: right;
+}
+
+#table-striped {
+  min-height: 100%;
 }

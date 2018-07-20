@@ -1,0 +1,20 @@
+= partial :sidebar
+
+= partial :navbar
+
+%div{:class => "main-content"}
+  %div{:class => "table_buttons_input"}
+    %input{:class => "form-control", :id => "page_search", :placeholder => "Search pages"}
+  %div{:class => "table_contents"}
+    %table{:class => "table table-striped", :id => "table-striped"}
+      %thead
+        %tr
+          %th{:scope => "col"} Title
+          %th{:scope => "col"} Description
+      %tbody
+        %tr
+        - @pages.each do |value|
+          %tr
+            %td
+              %a{:href => value.url} #{value.title}
+            %td #{value.description}

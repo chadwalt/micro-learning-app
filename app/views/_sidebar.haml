@@ -9,10 +9,10 @@
           %a{:href => ""} Dashboard
         %li{:class => "menu-tree"}
           %i{:class => "fas fa-file-alt"}
-          %a{:href => ""} Pages
+          %a{:href => "/pages"} Pages
         %li{:class => "menu-tree"}
           %i{:class => "fas fa-cogs"}
-          %a{:href => ""} Settings
+          %a{:href => "/profile"} Settings
         - if @user.role == user_roles[0]
           %li{:class => "menu-tree"}
             %i{:class => "fas fa-bars"}
