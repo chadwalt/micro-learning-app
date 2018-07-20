@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 gem 'bcrypt'
 gem 'haml'
@@ -8,7 +9,6 @@ gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-partial'
-
 
 group :test do
   gem 'database_cleaner'
