@@ -24,7 +24,6 @@ class SignupController < ApplicationController
       session[:user_id] = user_info[:_id]
       session[:image] = user_info[:image]
       session.delete(:error) if session[:error]
-      
       redirect '/profile'
     else
       session[:error] = @user.errors.full_messages

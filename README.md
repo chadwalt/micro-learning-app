@@ -23,6 +23,15 @@ Execute the following code to install all the application dependencies.
 bundle install
 ```
 
+The application can be run locally by executing the following command
+```
+shotgun
+```
+
+To access the appliation navigate to
+```
+https://micro-learning-app-staging.herokuapp.com/
+```
 ### Testing
 Tests can be run using
 ```

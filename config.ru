@@ -7,4 +7,5 @@ map('/signup') { use SignupController }
 map('/') { use SigninController }
 map('/profile') { use ProfileController }
 map('/category') { use CategoryController }
+map('/pages') { use PageController }
 run ApplicationController

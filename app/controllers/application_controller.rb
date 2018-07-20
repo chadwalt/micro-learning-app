@@ -4,6 +4,7 @@ require './config/environment'
 require 'haml'
 require 'base64'
 require 'sinatra/partial'
+require 'news-api'
 require_relative '../helpers/application_helper.rb'
 
 # Base Controller for the application
