@@ -12,9 +12,13 @@
           %th{:scope => "col"} Title
           %th{:scope => "col"} Description
       %tbody
-        %tr
         - @pages.each do |value|
           %tr
             %td
               %a{:href => value.url} #{value.title}
             %td #{value.description}
+
+:javascript
+  if ('sessionStorage' in window) {
+    sessionStorage.setItem('pages', JSON.stringify(#{@pages.to_json}));
+  }

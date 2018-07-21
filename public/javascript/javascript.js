@@ -32,5 +32,27 @@ $(function () {
     $('#category_description').val(category.description);
     $('#form_category').prop('action', '/category/edit_category')
     $('#AddCategoryModal').text("Edit Category")
-  })
+  });
+
+  /**
+   * Search through the pages.
+   */
+  $('#page_search').on('keyup', function() {
+    let search = $(this).val();
+    let pages = sessionStorage.pages ? JSON.parse(sessionStorage.pages) : [];
+    let table_body = ``;
+
+    $.each(pages, function(index, value) {
+      value.description = value.description ? value.description : '';
+
+      if (value.title.toLowerCase().includes(search) || value.description.toLowerCase().includes(search)) {
+        table_body += `<tr>`;
+        table_body += `<td> <a href='${value.url}'> ${value.title}</a></td>`;
+        table_body += `<td>${value.description}</td>`;
+        table_body += `</tr>`;
+      }
+    });
+
+    $('.table tbody').html(table_body);
+  });
 });
