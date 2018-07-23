@@ -14,7 +14,7 @@ class UserController < ApplicationController
     flash[:error] = 'Wrong Email/Password'
     redirect to('/')
   end
-
+  
   get '/' do
     redirect '/' unless session[:user_id]
 
