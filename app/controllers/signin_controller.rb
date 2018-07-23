@@ -4,7 +4,7 @@ require_relative '../models/user'
 # Signin the user into the application.
 class SigninController < ApplicationController
   error Mongoid::Errors::DocumentNotFound do
-    flash[:error] = 'Wrong Email/Password'
+    flash[:error] = "Email doesn't exist"
     redirect to('/')
   end
 
@@ -20,9 +20,23 @@ class SigninController < ApplicationController
       submited_data[:password]
     )
 
-    session[:user_id] = user[:_id]
-    session[:image] = user[:image]
+    if user
+      session[:user_id] = user[:_id]
+      session[:image] = user[:image]
 
-    redirect to('/dashboard')
+      if user[:role] == user_roles[0]
+        redirect '/user'
+      end
+
+      redirect '/pages'
+    else
+      flash[:error] =  'Wrong Email/Password'
+      redirect to('/')
+    end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect to('/')
   end
 end
