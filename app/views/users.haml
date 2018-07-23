@@ -1,0 +1,20 @@
+= partial :sidebar
+
+= partial :navbar
+
+%div{:class => "main-content"}
+  %div{:class => "table_buttons_input"}
+    %input{:class => "form-control", :id => "user_search", :placeholder => "Search Users using email, username"}
+  %div{:class => "table_contents"}
+    %table{:class => "table table-striped", :id => "table-striped", :"data-users" => @users.to_json}
+      %thead
+        %tr
+          %th{:scope => "col"} Full Name
+          %th{:scope => "col"} Username
+          %th{:scope => "col"} Email
+      %tbody
+        - @users.each do |value|
+          %tr
+            %td #{value.first_name} #{value.last_name}
+            %td #{value.username}
+            %td #{value.email}
