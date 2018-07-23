@@ -16,11 +16,11 @@
 
       %div{:class => "tab-content"}
         %div{:id => "settings-tab", :class => "tab-pane fade show active"}
-          - if session[:error]
-            %div{:class => "alert alert-danger", :role => "alert"} #{session[:error]}
+          - if flash[:error]
+            %div{:class => "alert alert-danger", :role => "alert"} #{flash[:error]}
 
-          - if session[:success]
-            %div{:class => "alert alert-success", :role => "alert"} #{session[:success]}
+          - if flash[:success]
+            %div{:class => "alert alert-success", :role => "alert"} #{flash[:success]}
 
           %form{:action => "profile/update_user", :method => "POST", :enctype => "multipart/form-data"}
             %div{:class => "form-group row"}

@@ -28,7 +28,7 @@ class ProfileController < ApplicationController
     end
 
     User.where(_id: session[:user_id]).update(params[:user])
-    session[:success] = 'Successfully Saved'
+    flash[:success] = 'Successfully Saved'
 
     redirect '/profile'
   end
@@ -41,13 +41,12 @@ class ProfileController < ApplicationController
     if user.authenticate(submitted_data[:old_password])
       if submitted_data[:password] == submitted_data[:password_confirmation]
         user.update_attributes(password_digest: submitted_data[:password])
-        session[:success] = 'Password changed successfully'
-        session.delete(:error) if session[:error]
+        flash[:success] = 'Password changed successfully'
       else
-        session[:error] = "Confirmation Password didn't match Password"
+        flash[:error] = "Confirmation Password didn't match Password"
       end
     else
-      session[:error] = "Old password didn't match existing password"
+      flash[:error] = "Old password didn't match existing password"
     end
 
     redirect '/profile'

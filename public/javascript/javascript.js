@@ -55,4 +55,26 @@ $(function () {
 
     $('.table tbody').html(table_body);
   });
+
+  /**
+   * Search through the users.
+   */
+  $('#user_search').on('keyup', function() {
+    let search = $(this).val();
+    let users = $('#table-striped').data('users')
+    let table_body = ``;
+
+    $.each(users, function(index, value) {
+      if (value.username.toLowerCase().includes(search) || value.email.toLowerCase().includes(search)) {
+        table_body += `<tr>`;
+        table_body += `<td>${value.first_name} ${value.last_name}</td>`;
+        table_body += `<td>${value.username}</td>`;
+        table_body += `<td>${value.email}</td>`;
+        table_body += `</tr>`;
+      }
+    });
+
+    $('.table tbody').html(table_body);
+  });
+
 });

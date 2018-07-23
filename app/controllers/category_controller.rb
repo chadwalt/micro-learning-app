@@ -4,7 +4,7 @@ require_relative '../models/category'
 # Category controller handles all CRUD operations of the category.
 class CategoryController < ApplicationController
   error Mongoid::Errors::DocumentNotFound do
-    session[:error] = 'Wrong Email/Password'
+    flash[:error] = 'Wrong Email/Password'
     redirect to('/')
   end
 
@@ -24,9 +24,9 @@ class CategoryController < ApplicationController
     @category = Category.new(submitted_data)
 
     if @category.save
-      session[:success] = 'Category saved successfully'
+      flash[:success] = 'Category saved successfully'
     else
-      session[:error] = 'Category not saved successfully'
+      flash[:error] = 'Category not saved successfully'
     end
 
     redirect to('/')
@@ -36,7 +36,7 @@ class CategoryController < ApplicationController
     submitted_data = html_escaper(params[:category])
     Category.where(_id: submitted_data[:_id]).update(submitted_data)
 
-    session[:success] = 'Category saved successfully'
+    flash[:success] = 'Category saved successfully'
 
     redirect to('/')
   end
@@ -45,7 +45,7 @@ class CategoryController < ApplicationController
     category_id = escape_html(params.fetch('category_id'))
     Category.where(_id: category_id).delete
 
-    session[:success] = 'Category saved successfully'
+    flash[:success] = 'Category saved successfully'
     { success: true, message: 'category_deleted' }.to_json
   end
 end
