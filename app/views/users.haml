@@ -3,7 +3,14 @@
 = partial :navbar
 
 %div{:class => "main-content"}
-  %div{:class => "table_buttons_input"}
+  - if flash[:error]
+    %div{:class => "alert alert-danger", :role => "alert"} #{flash[:error]}
+
+  - if flash[:success]
+    %div{:class => "alert alert-success", :role => "alert"} #{flash[:success]}
+
+  %div{:class => "table_users_buttons"}
+    %button{:class => "btn btn-primary", :"data-toggle" => "modal", :"data-target" => "#userModal", :id => "add_user"} Add User
     %input{:class => "form-control", :id => "user_search", :placeholder => "Search Users using email, username"}
   %div{:class => "table_contents"}
     %table{:class => "table table-striped", :id => "table-striped", :"data-users" => @users.to_json}
@@ -12,9 +19,50 @@
           %th{:scope => "col"} Full Name
           %th{:scope => "col"} Username
           %th{:scope => "col"} Email
+          %th{:scope => "col"} Delete
       %tbody
         - @users.each do |value|
           %tr
             %td #{value.first_name} #{value.last_name}
             %td #{value.username}
             %td #{value.email}
+            %td
+              %a{:href => "/user/delete_user/#{value._id}"}
+                %i{:class => "fa fa-trash"}
+
+%div{:class => "modal fade", :id => "userModal", :tabindex => "-1", :role => "dialog", :"aria-labelledby" => "AddUserModal", :"aria-hidden" => "true"}
+  %div{:class => "modal-dialog", :role => "document"}
+    %div{:class => "modal-content"}
+      %div{:class => "modal-header"}
+        %h5{:class => "modal-title", :id => "AddUserModal"} Add New User
+      %div{:class => "modal-body"}
+        %form{:action => "user/add_user", :method => "POST", :id => "form_user"}
+          %div{:class => "form-group row"}
+            %label{:for => "first_name", :class =>"col-sm-3 col-form-label"} First Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[first_name]", :id => "first_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "last_name", :class =>"col-sm-3 col-form-label"} Last Name
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[last_name]",:id => "last_name"}
+          %div{:class => "form-group row"}
+            %label{:for => "username", :class =>"col-sm-3 col-form-label"} Username
+            %div{:class => "col-sm-7"}
+              %input{:type => "text", :class => "form-control", :required => true, :name => "user[username]", :id => "username"}
+          %div{:class => "form-group row"}
+            %label{:for => "password", :class =>"col-sm-3 col-form-label"} Password
+            %div{:class => "col-sm-7"}
+              %input{:type => "password", :class => "form-control", :required => true, :name => "user[password]", :id => "password"}
+          %div{:class => "form-group row"}
+            %label{:for => "email", :class =>"col-sm-3 col-form-label"} Email
+            %div{:class => "col-sm-7"}
+              %input{:type => "email", :class => "form-control", :required => true, :name => "user[email]", :id => "email"}
+          %div{:class => "form-group row"}
+            %label{:for => "role", :class =>"col-sm-3 col-form-label"} Role
+            %div{:class => "col-sm-7"}
+              %select{:class => "form-control", :required => true, :name => "user[role]", :id => "role"}
+                %option{:value => 'user'} Normal User
+                %option{:value => 'admin'} Admin
+      %div{:class => "modal-footer"}
+        %button{:type => "button", :class => "btn btn-secondary", :"data-dismiss" => "modal"} Close
+        %button{:type => "button", :class => "btn btn-primary", :"data-dismiss" => "modal", :id => "save_user"} Save Changes
