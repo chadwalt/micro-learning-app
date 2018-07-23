@@ -78,3 +78,10 @@ $(function () {
   });
 
 });
+
+  /**
+   * Save new user
+   */
+  $('#save_user').on('click', function () {
+    $('#form_user').submit()
+  });

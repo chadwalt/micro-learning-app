@@ -8,6 +8,6 @@ map('/') { use SigninController }
 map('/profile') { use ProfileController }
 map('/category') { use CategoryController }
 map('/pages') { use PageController }
-map('/users') { use UserController }
+map('/user') { use UserController }
 
 run ApplicationController

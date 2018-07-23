@@ -3,6 +3,18 @@ require_relative '../models/user'
 
 # Handles user profile.
 class UserController < ApplicationController
+  error Mongo::Error::OperationFailure do |error|
+    if error.message.include? 'E11000'
+      flash[:error] = 'Email taken, please use another'
+      redirect to('/')
+    end
+  end
+
+  error Mongoid::Errors::DocumentNotFound do
+    flash[:error] = 'Wrong Email/Password'
+    redirect to('/')
+  end
+  
   get '/' do
     redirect '/' unless session[:user_id]
 
@@ -13,23 +25,22 @@ class UserController < ApplicationController
     haml :users
   end
 
-  post '/update_user' do
-    if params[:user]['image']
-      file = params[:user]['image']
-      file_name = file[:filename]
-      temp_file = file[:tempfile]
+  post '/add_user' do
+    @user = User.new(html_escaper(params[:user]))
 
-      File.open("./public/images/#{file_name}", 'wb') do |f|
-        f.write(temp_file.read)
-      end
-
-      params[:user]['image'] = file_name
-      session[:image] = file_name
+    if @user.save
+      flash[:success] = 'User saved successfully'
+    else
+      flash[:error] = @user.errors.full_messages
     end
 
-    User.where(_id: session[:user_id]).update(params[:user])
-    flash[:success] = 'Successfully Saved'
+    redirect '/user'
+  end
 
-    redirect '/profile'
+  get '/delete_user/:user_id' do
+    user_id = escape_html(params.fetch('user_id'))
+    user = User.find_by(_id: user_id)
+    user.delete
+    redirect to('/')
   end
 end
