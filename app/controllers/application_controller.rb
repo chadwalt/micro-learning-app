@@ -4,6 +4,7 @@ require './config/environment'
 require 'haml'
 require 'base64'
 require 'sinatra/partial'
+require 'sinatra/flash'
 require 'news-api'
 require_relative '../helpers/application_helper.rb'
 
@@ -19,6 +20,7 @@ class ApplicationController < Sinatra::Base
     set :show_exceptions, :after_handler
     register Sinatra::Partial
     enable :partial_underscores
+    register Sinatra::Flash
   end
 
   before do

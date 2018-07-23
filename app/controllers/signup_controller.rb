@@ -5,14 +5,14 @@ require_relative '../models/user'
 class SignupController < ApplicationController
   error Mongo::Error::OperationFailure do |error|
     if error.message.include? 'E11000'
-      session[:error] = 'Email taken, please use another'
+      flash[:error] = 'Email taken, please use another'
       redirect to('/')
     end
   end
 
   get '/' do
     @css_link = 'index.css'
-    @error_message = session[:error]
+    @error_message = flash[:error]
     haml :signup
   end
 
@@ -23,10 +23,9 @@ class SignupController < ApplicationController
       user_info = User.find_by(email: params[:user][:email])
       session[:user_id] = user_info[:_id]
       session[:image] = user_info[:image]
-      session.delete(:error) if session[:error]
       redirect '/profile'
     else
-      session[:error] = @user.errors.full_messages
+      flash[:error] = @user.errors.full_messages
       redirect to('/')
     end
   end

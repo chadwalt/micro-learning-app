@@ -59,6 +59,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     sinatra-partial (1.0.1)
       sinatra (>= 1.4)
     temple (0.8.0)
@@ -83,6 +85,7 @@ DEPENDENCIES
   rspec_junit_formatter
   shotgun
   sinatra
+  sinatra-flash
   sinatra-partial
 
 RUBY VERSION

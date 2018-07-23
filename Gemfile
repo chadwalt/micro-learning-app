@@ -9,6 +9,7 @@ gem 'pry'
 gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'sinatra-partial'
 
 group :test do
