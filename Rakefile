@@ -62,3 +62,11 @@ namespace :db do
     end
   end
 end
+
+namespace :send_email do
+  task :mail do
+    require_relative './app/controllers/user_controller'
+
+    UserController.send_emails
+  end
+end
