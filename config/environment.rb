@@ -8,7 +8,7 @@ require 'dotenv/load'
 
 Bundler.require(:default, ENV['RACK_ENV'])
 
-configure :production, :development do
+configure :test, :production, :development do
   enable :logging
   Mongoid.load!(File.expand_path(File.join('config', 'mongoid.yml')))
 end
