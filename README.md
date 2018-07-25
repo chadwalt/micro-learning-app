@@ -32,13 +32,19 @@ To access the appliation navigate to
 ```
 https://micro-learning-app-staging.herokuapp.com/
 ```
+
+The application uses `whenever gem` to send emails to users very 24 hours informing them about something new to learn about.
+
+Before sending emails one has to create an email that will be used to send emails, and these have to be provided in the STMP configurations. The application requries one to provide following to fully configure email sending:- `EMAIL_DOMAIN`, `EMAIL`, `EMAIL_USERNAME`,and `EMAIL_PASSWORD`.
+
+Executing this rake command triggers the sending of emails.
+```
+rake send_emails:mail
+```
+
 ### Testing
 Tests can be run using
 ```
 bundle exec rspec
 ```
 
-The application uses `whenever gem` to send emails to users very 24 hours informing them about something new to learn about. Executing this rake command triggers the sending of emails.
-```
-rake send_emails:mail
-```
