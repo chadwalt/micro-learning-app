@@ -65,7 +65,7 @@ end
 
 ## Send emails to all users who have interests
 ## Usage - rake send_emails:mail
-namespace :send_email do
+namespace :send_emails do
   task :mail do
     require_relative './lib/mailer'
     logger.info 'Emails sent'
