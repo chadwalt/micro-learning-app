@@ -37,3 +37,8 @@ Tests can be run using
 ```
 bundle exec rspec
 ```
+
+The application uses `whenever gem` to send emails to users very 24 hours informing them about something new to learn about. Executing this rake command triggers the sending of emails.
+```
+rake send_emails:mail
+```
