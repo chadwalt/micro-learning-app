@@ -11,7 +11,6 @@ require_relative '../helpers/application_helper'
 # Base Controller for the application
 class ApplicationController < Sinatra::Base
   helpers Sinatra::AppHelpers
-  @@newsapi = News.new(ENV['NEWS_API_KEY'])
 
   configure do
     set :public_folder, 'public'
