@@ -7,7 +7,7 @@ require_relative './helpers/mail_helper'
 users = User.all
 categories = Category.all
 pages = {}
-email_body = 'Here is a new page to learn about '
+email_subject = 'Things to learn'
 @newsapi = News.new(ENV['NEWS_API_KEY'])
 
 def get_news_feed(category)
@@ -28,6 +28,6 @@ users.each do |value|
       "<p>Title: #{pages[value.interests[0]][0].title}</p>" \
       "<p>Description: #{pages[value.interests[0]][0].description}</p>"
 
-    MailHelpers.send_mail(value.email, 'Things to learn', body)
+    MailHelpers.send_mail(value.email, email_subject, body)
   end
 end
