@@ -2,7 +2,7 @@
 module Sinatra
   # Application Helpers
   module AppHelpers
-    @@newsapi = News.new(ENV.fetch('NEWS_API_KEY'))
+    @@newsapi = News.new(ENV['NEWS_API_KEY'])
 
     def html_escaper(params)
       params.each do |key, value|

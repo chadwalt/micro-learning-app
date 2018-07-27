@@ -10,8 +10,10 @@ class PageController < ApplicationController
     @user = User.find_by(_id: session[:user_id])
     @pages = []
 
-    @user.interests.each do |value|
-      @pages.push(*get_news_feed(value))
+    if @user&.interests
+      @user.interests.each do |value|
+        @pages.push(*get_news_feed(value))
+      end
     end
 
     haml :pages

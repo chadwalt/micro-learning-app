@@ -62,3 +62,16 @@ namespace :db do
     end
   end
 end
+
+## Send emails to all users who have interests
+## Usage - rake send_emails:mail
+namespace :send_emails do
+  task :mail do
+    require_relative './lib/mailer'
+
+    Mailer.pages
+    Mailer.send_emails
+
+    logger.info 'Emails sent'
+  end
+end

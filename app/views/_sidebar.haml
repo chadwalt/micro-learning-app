@@ -5,11 +5,11 @@
       %ul{:class => "sidebar-menu"}
         %li{:class => "sidebar-header"} Main Navigation
         %li{:class => "menu-tree"}
-          %i{:class => "fas fa-tachometer-alt"}
-          %a{:href => ""} Dashboard
-        %li{:class => "menu-tree"}
           %i{:class => "fas fa-file-alt"}
           %a{:href => "/pages"} Pages
+        %li{:class => "menu-tree"}
+          %i{:class => "fas fa-tachometer-alt"}
+          %a{:href => "/profile"} Settings
         - if @user.role == user_roles[0]
           %li{:class => "menu-tree"}
             %i{:class => "fas fa-bars"}

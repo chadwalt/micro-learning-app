@@ -6,7 +6,7 @@ require 'base64'
 require 'sinatra/partial'
 require 'sinatra/flash'
 require 'news-api'
-require_relative '../helpers/application_helper.rb'
+require_relative '../helpers/application_helper'
 
 # Base Controller for the application
 class ApplicationController < Sinatra::Base
@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     set :sessions, true
-    set :session_secret, ENV.fetch('SESSION_SECRET')
+    set :session_secret, ENV['SESSION_SECRET']
     set :show_exceptions, :after_handler
     register Sinatra::Partial
     enable :partial_underscores
