@@ -24,13 +24,10 @@ class SigninController < ApplicationController
       session[:user_id] = user[:_id]
       session[:image] = user[:image]
 
-      if user[:role] == user_roles[0]
-        redirect '/user'
-      end
-
+      redirect '/user' if user[:role] == user_roles[0]
       redirect '/pages'
     else
-      flash[:error] =  'Wrong Email/Password'
+      flash[:error] = 'Wrong Email/Password'
       redirect to('/')
     end
   end

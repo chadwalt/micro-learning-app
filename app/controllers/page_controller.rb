@@ -10,7 +10,7 @@ class PageController < ApplicationController
     @user = User.find_by(_id: session[:user_id])
     @pages = []
 
-    if @user.interests
+    if @user&.interests
       @user.interests.each do |value|
         @pages.push(*get_news_feed(value))
       end

@@ -8,15 +8,7 @@ module MailHelpers
   # subject => The subject of the email
   # body => The contents of the email
   def self.send_mail(email_to, subject, body)
-    options = {
-      address: 'smtp.gmail.com',
-      port: 587,
-      domain: ENV['EMAIL_DOMAIN'],
-      user_name: ENV['EMAIL_USERNAME'],
-      password: ENV['EMAIL_PASSWORD'],
-      authentication: 'plain',
-      enable_starttls_auto: true
-    }
+    options = stmp_options
 
     Mail.defaults do
       delivery_method :smtp, options
@@ -35,4 +27,18 @@ module MailHelpers
 
     mail.deliver
   end
+
+  def self.stmp_options
+    {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: ENV['EMAIL_DOMAIN'],
+      user_name: ENV['EMAIL_USERNAME'],
+      password: ENV['EMAIL_PASSWORD'],
+      authentication: 'plain',
+      enable_starttls_auto: true
+    }
+  end
+
+  private_class_method :stmp_options
 end
