@@ -6,14 +6,14 @@ require_relative './helpers/mail_helper'
 
 ## Send mails to users with interests.
 class Mailer
-  @@users = User.all.to_a
-  @@categories = Category.all.to_a
-  @@pages = {}
-  @@email_subject = 'Things to learn'
-  @@newsapi = News.new(ENV['NEWS_API_KEY'])
+  @users = User.all.to_a
+  @categories = Category.all.to_a
+  @pages = {}
+  @email_subject = 'Things to learn'
+  @newsapi = News.new(ENV['NEWS_API_KEY'])
 
   def self.news_feeds(category)
-    @@newsapi.get_top_headlines(
+    @newsapi.get_top_headlines(
       category: category,
       language: 'en',
       country: 'us'
@@ -21,19 +21,19 @@ class Mailer
   end
 
   def self.pages
-    @@categories.each do |value|
-      @@pages[value[:name]] = news_feeds(value[:name])
+    @categories.each do |value|
+      @pages[value[:name]] = news_feeds(value[:name])
     end
   end
 
   def self.send_emails
-    @@users.each do |value|
+    @users.each do |value|
       next unless value[:interests]
       body = '<p>Here are things to learn about </p>' \
-        "<p>Title: #{@@pages[value[:interests][0]][0].title}</p>" \
-        "<p>Description: #{@@pages[value[:interests][0]][0].description}</p>"
+        "<p>Title: #{@pages[value[:interests][0]][0].title}</p>" \
+        "<p>Description: #{@pages[value[:interests][0]][0].description}</p>"
 
-      MailHelpers.send_mail(value[:email], @@email_subject, body)
+      MailHelpers.send_mail(value[:email], @email_subject, body)
     end
   end
 
