@@ -8,14 +8,16 @@ users = [
     last_name: 'kyadondo',
     username: 'chadwalt',
     password: '123',
-    email: 'timothy.kyadondo@gmail.com'
+    email: 'timothy.kyadondo@gmail.com',
+    role: 'admin'
   },
   {
     first_name: 'james',
     last_name: 'kasule',
     username: 'james',
     password: '12345',
-    email: 'james.kasule@gmail.com'
+    email: 'james.kasule@gmail.com',
+    role: 'user'
   }
 ]
 
