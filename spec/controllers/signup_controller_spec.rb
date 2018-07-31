@@ -38,11 +38,11 @@ describe SignupController do
   end
 
   it 'should redirect to /signup when email is already taken' do
-      @user_data[:user][:email] = 'timothy.kyadondo@gmail.com'
+    @user_data[:user][:email] = 'timothy.kyadondo@gmail.com'
 
-      post '/user_info', @user_data
-      expect(last_response).to be_redirect
-      follow_redirect!
-      expect(last_response.body).to include("Email taken, please use another")
+    post '/user_info', @user_data
+    expect(last_response).to be_redirect
+    follow_redirect!
+    expect(last_response.body).to include("Email taken, please use another")
   end
 end
