@@ -4,6 +4,7 @@ User.destroy_all
 
 users = [
   {
+    _id: 1,
     first_name: 'timothy',
     last_name: 'kyadondo',
     username: 'chadwalt',
@@ -12,6 +13,7 @@ users = [
     role: 'admin'
   },
   {
+    _id: 2,
     first_name: 'james',
     last_name: 'kasule',
     username: 'james',
