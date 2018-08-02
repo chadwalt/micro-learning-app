@@ -1,7 +1,5 @@
 require_relative '../spec_helper'
 require_relative '../../app/controllers/profile_controller'
-require_relative '../../app/models/category'
-require_relative '../../app/models/user'
 
 describe ProfileController do
   before :each do
