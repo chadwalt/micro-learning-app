@@ -3,6 +3,8 @@ require 'rspec'
 require 'rake'
 require 'rack/test'
 require 'database_cleaner'
+require 'simplecov'
+SimpleCov.start
 
 ENV['RACK_ENV']='test'
 enable :sessions
