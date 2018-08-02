@@ -4,7 +4,14 @@ require 'rake'
 require 'rack/test'
 require 'database_cleaner'
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  ignore = ['spec', 'seeders']
+
+  ignore.each do |files|
+    add_filter files
+  end
+end
 
 ENV['RACK_ENV']='test'
 enable :sessions
