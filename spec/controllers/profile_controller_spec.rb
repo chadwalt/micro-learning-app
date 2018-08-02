@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 require_relative '../../app/controllers/profile_controller'
 
 describe ProfileController do
   before :each do
-    @user_session = {user_id: 1}
+    @user_session = { user_id: 1 }
     @user_data = {
       user: {
         first_name: 'timothy',
@@ -21,7 +23,7 @@ describe ProfileController do
   end
 
   it 'should render the profile page' do
-    get '/', {}, {'rack.session' => @user_session}
+    get '/', {}, 'rack.session' => @user_session
 
     expect(last_response.status).to eq 200
     expect(last_response.body).to include('Profile')
@@ -31,7 +33,9 @@ describe ProfileController do
     post '/update_user', @user_data
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_request.session['flash'][:success]).to include('Successfully Saved')
+    expect(
+      last_request.session['flash'][:success]
+    ).to include('Successfully Saved')
   end
 
   it 'should update the user password with correct credentials' do
@@ -42,10 +46,12 @@ describe ProfileController do
         password_confirmation: '1223'
       }
     }
-    post '/change_password', @user_data, {'rack.session' => @user_session}
+    post '/change_password', @user_data, 'rack.session' => @user_session
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_request.session['flash'][:success]).to include('Password changed successfully')
+    expect(
+      last_request.session['flash'][:success]
+    ).to include('Password changed successfully')
   end
 
   it 'should not update the user password with password mismatches' do
@@ -56,10 +62,12 @@ describe ProfileController do
         password_confirmation: '122323'
       }
     }
-    post '/change_password', @user_data, {'rack.session' => @user_session}
+    post '/change_password', @user_data, 'rack.session' => @user_session
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_request.session['flash'][:error]).to include("Confirmation Password didn't match Password")
+    expect(
+      last_request.session['flash'][:error]
+    ).to include("Confirmation Password didn't match Password")
   end
 
   it 'should not update the user with wrong credentials' do
@@ -70,9 +78,11 @@ describe ProfileController do
         password_confirmation: '1223'
       }
     }
-    post '/change_password', @user_data, {'rack.session' => @user_session}
+    post '/change_password', @user_data, 'rack.session' => @user_session
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_request.session['flash'][:error]).to include("Old password didn't match existing password")
+    expect(
+      last_request.session['flash'][:error]
+    ).to include("Old password didn't match existing password")
   end
 end

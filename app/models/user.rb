@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Manage user
 class User
   include Mongoid::Document
@@ -20,5 +22,5 @@ class User
 
   has_secure_password
 
-  index({ email: 1 }, { unique: true, name: 'email_index' })
+  index({ email: 1 }, unique: true, name: 'email_index')
 end

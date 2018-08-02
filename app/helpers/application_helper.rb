@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 # Sinatra Helpers
 module Sinatra
   # Application Helpers
   module AppHelpers
-    @@newsapi = News.new(ENV['NEWS_API_KEY'])
+    NEWSAPI = News.new(ENV['NEWS_API_KEY'])
 
     def html_escaper(params)
       params.each do |key, value|
@@ -17,7 +19,7 @@ module Sinatra
     end
 
     def get_news_feed(category)
-      @@newsapi.get_top_headlines(
+      NEWSAPI.get_top_headlines(
         category: category,
         language: 'en',
         country: 'us'

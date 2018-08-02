@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/category'
 
 Category.destroy_all

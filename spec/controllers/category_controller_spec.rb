@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 require_relative '../../app/controllers/category_controller'
 
 describe CategoryController do
   before :each do
-    @user_session = {user_id: 1}
+    @user_session = { user_id: 1 }
     @category = {
       category: {
         name: 'Technology',
@@ -18,7 +20,7 @@ describe CategoryController do
   end
 
   it 'should render the category page' do
-    get '/', {}, {'rack.session' => @user_session}
+    get '/', {}, 'rack.session' => @user_session
 
     expect(last_response.status).to eq 200
     expect(last_response.body).to include('Category')
@@ -48,7 +50,7 @@ describe CategoryController do
   end
 
   it 'should delete a category' do
-    post '/delete_category', {category_id: 1}
+    post '/delete_category', category_id: 1
 
     expect(last_response.status).to eq(200)
     expect(last_request.session['flash'][:success]).to include('Category deleted successfully')

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 require_relative '../../app/controllers/signin_controller'
 
@@ -46,6 +48,6 @@ describe SigninController do
     post '/signin', user_data
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_response.body).to include("Wrong Email/Password")
+    expect(last_response.body).to include('Wrong Email/Password')
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/user'
 
 User.destroy_all

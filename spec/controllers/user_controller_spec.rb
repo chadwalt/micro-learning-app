@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper.rb'
 require_relative '../../app/controllers/user_controller'
 
 describe UserController do
   before :each do
-    @user_session = {user_id: 1}
+    @user_session = { user_id: 1 }
     @user_data = {
       user: {
         first_name: 'Wycliff',
@@ -22,13 +24,13 @@ describe UserController do
   end
 
   it 'should render the users page' do
-    get '/', {}, {'rack.session' => @user_session}
+    get '/', {}, 'rack.session' => @user_session
     expect(last_response.status).to eq 200
     expect(last_response.body).to include('Users')
   end
 
   it 'should add users' do
-    post '/add_user', @user_data, {'rack.session' => @user_session}
+    post '/add_user', @user_data, 'rack.session' => @user_session
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_request.session['flash'][:success]).to include('User saved successfully')

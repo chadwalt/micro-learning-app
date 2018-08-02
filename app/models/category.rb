@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Handle category database operations
 class Category
   include Mongoid::Document
@@ -7,5 +9,5 @@ class Category
   field :name, type: String
   field :description, type: String
 
-  index({ name: 1 }, { unique: true, name: 'name_index' })
+  index({ name: 1 }, unique: true, name: 'name_index')
 end

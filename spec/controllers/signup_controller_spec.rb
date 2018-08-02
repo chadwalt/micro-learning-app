@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 require_relative '../../app/controllers/signup_controller'
 
@@ -43,6 +45,6 @@ describe SignupController do
     post '/user_info', @user_data
     expect(last_response).to be_redirect
     follow_redirect!
-    expect(last_response.body).to include("Email taken, please use another")
+    expect(last_response.body).to include('Email taken, please use another')
   end
 end

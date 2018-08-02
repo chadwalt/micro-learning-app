@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'news-api'
 require './config/environment'
 require_relative '../app/models/user'
