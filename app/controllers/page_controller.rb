@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './application_controller'
 
 # Handle the display of pages.

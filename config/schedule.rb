@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :environment, ENV['RACK_ENV']
 
 every :day, at: '12:00am' do

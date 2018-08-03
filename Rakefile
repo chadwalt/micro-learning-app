@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mongoid'
 require 'logger'
 
@@ -8,8 +10,8 @@ ROOT = File.expand_path('.', File.dirname(__FILE__))
 namespace :mongoid do
   task :create_indexes, :environment do |_t, args|
     def determine_model(path)
-      path =~ /^(.*)\/(.*).rb/
-      $2.camelize.constantize
+      path =~ %r{^(.*)\/(.*).rb}
+      Regexp.last_match[2].camelize.constantize
     end
 
     unless args[:environment]

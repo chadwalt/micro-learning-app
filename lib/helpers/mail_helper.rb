@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mail'
 require 'dotenv/load'
 
@@ -9,10 +11,7 @@ module MailHelpers
   # body => The contents of the email
   def self.send_mail(email_to, subject, body)
     options = stmp_options
-
-    Mail.defaults do
-      delivery_method :smtp, options
-    end
+    Mail.defaults { delivery_method :smtp, options }
 
     mail = Mail.new do
       from      ENV['EMAIL']

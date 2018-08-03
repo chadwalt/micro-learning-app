@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './application_controller'
 require_relative '../models/user'
 
@@ -11,7 +13,7 @@ class UserController < ApplicationController
   end
 
   error Mongoid::Errors::DocumentNotFound do
-    flash[:error] = 'Wrong Email/Password'
+    flash[:error] = 'Document not found'
     redirect to('/')
   end
 

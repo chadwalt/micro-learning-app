@@ -38,7 +38,7 @@ $(function () {
    * Search through the pages.
    */
   $('#page_search').on('keyup', function() {
-    let search = $(this).val();
+    let search = $(this).val().toLowerCase();
     let pages = sessionStorage.pages ? JSON.parse(sessionStorage.pages) : [];
     let table_body = ``;
 

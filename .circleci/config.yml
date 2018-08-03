@@ -42,6 +42,7 @@ jobs:
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            rake 'mongoid:create_indexes[test]'
 
             bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
