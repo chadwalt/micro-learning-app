@@ -10,7 +10,8 @@ module MailHelpers
   # subject => The subject of the email
   # body => The contents of the email
   def self.send_mail(email_to, subject, body)
-    Mail.defaults { delivery_method :smtp, stmp_options }
+    options = stmp_options
+    Mail.defaults { delivery_method :smtp, options }
 
     mail = Mail.new do
       from      ENV['EMAIL']

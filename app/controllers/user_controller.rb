@@ -13,7 +13,7 @@ class UserController < ApplicationController
   end
 
   error Mongoid::Errors::DocumentNotFound do
-    flash[:error] = 'Wrong Email/Password'
+    flash[:error] = 'Document not found'
     redirect to('/')
   end
 

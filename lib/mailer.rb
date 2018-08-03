@@ -31,9 +31,13 @@ class Mailer
   def self.send_emails
     @users.each do |value|
       next unless value[:interests]
+      title = @pages[value[:interests][0]][0].title
+      description = @pages[value[:interests][0]][0].description
+      url = @pages[value[:interests][0]][0].url
       body = '<p>Here are things to learn about </p>' \
-        "<p>Title: #{@pages[value[:interests][0]][0].title}</p>" \
-        "<p>Description: #{@pages[value[:interests][0]][0].description}</p>"
+        "<p><a href='#{url}' target='_blank'" \
+        "rel='noopener noreferrer'> Title: #{title}</a></p>" \
+        "<p>Description: #{description}</p>"
 
       MailHelpers.send_mail(value[:email], @email_subject, body)
     end
